@@ -3165,12 +3165,12 @@ static void *cache_alloc_debugcheck_after(struct kmem_cache *cachep,
 #define cache_alloc_debugcheck_after(a,b,objp,d) (objp)
 #endif
 
-static bool slab_should_failslab(struct kmem_cache *cachep, gfp_t flags)
+static bool slab_should_failslab(struct kmem_cache *cachep, gfp_t flags )
 {
 	if (cachep == &cache_cache)
 		return false;
 
-	return should_failslab(obj_size(cachep), flags, cachep->flags);
+	return should_failslab(obj_size(cachep), flags, cachep->flags , 0);
 }
 
 static inline void *____cache_alloc(struct kmem_cache *cachep, gfp_t flags)
